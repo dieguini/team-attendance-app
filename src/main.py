@@ -1,8 +1,9 @@
-## App entry point
+# App entry point
 from helpers.args_processor import args_processor
 from helpers.data_processor import returns_json_attendance_reports
 from helpers.dates_helper import enter_new_dates, string_to_date, validation_date
 from helpers.json_processor import print_json, writes_json_file
+
 
 def is_valid_option(selected_option):
     """
@@ -14,14 +15,12 @@ def is_valid_option(selected_option):
     """
     if selected_option == '1':
         return True
-    
     if selected_option == '2':
         return True
-    
     if selected_option == 'q':
         return True
-    
     return False
+
 
 def process_questions():
     ## display questions menu
@@ -29,7 +28,7 @@ def process_questions():
     """
         returns number
     """
-    selected_option = None 
+    selected_option = None
     print('Please select an option')
     print('-----------------------')
     # TODO make markdown questions
@@ -49,10 +48,10 @@ def process_questions():
 
     return selected_option
 
-#TODO if no params then interactive
+
 def process_question_options():
-    ## display input to request meeting name, end and start date
-    ## drive "input" aquisition while not Quit
+    # display input to request meeting name, end and start date
+    # drive "input" aquisition while not Quit
     
     meeting_name = input('Enter meeting name: ')
 
@@ -72,10 +71,12 @@ def process_question_options():
     }
     return arguments
 
+
 def welcome():
     print('########################################')
     print('##         TEAM ATTENDANCE APP        ##')
     print('########################################\n')
+
 
 def main():
     welcome()
@@ -83,25 +84,25 @@ def main():
     args = args_processor()
 
     if all(args.values()):
-        option  = args.get('option')
+        option = args.get('option')
         arguments = args
     else:
-        option  = process_questions()
+        option = process_questions()
         arguments =  process_question_options()
-    
-    print('Option selected: ',option)
+    print('Option selected: ', option)
 
     if option == 'q':
-        print("Bye bye!") 
+        print("Bye bye!")
         return
 
     json_data = returns_json_attendance_reports(
-        arguments.get('meeting_name'), 
-        arguments.get('start_date'), 
+        arguments.get('meeting_name'),
+        arguments.get('start_date'),
         arguments.get('end_date'),
         option
     )
     print_json(json_data)
     writes_json_file(json_data)
+
 
 main()

@@ -62,6 +62,6 @@ def test_returns_json_attendance_reports_general_number_participants_true():
         start_date,
         end_date,
         option
-        )
+    )
     assert_msj = "Json reports are equal"
     assert expected_result == result, assert_msj

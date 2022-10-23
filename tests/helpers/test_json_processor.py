@@ -20,7 +20,8 @@ def test_generate_json_true():
     }
 
     response = generate_json(string_meeting_title, data)
-    assert response == expected_response, "Expected response are json objects equal?"
+    assert_msg = "Expected response are json objects equal?"
+    assert response == expected_response, assert_msg
 
 
 def test_generate_dict_true():
@@ -33,7 +34,8 @@ def test_generate_dict_true():
     }
 
     result = generate_dict(string_date, key, key_variable)
-    assert result == expected_result, "Expected response dictoinary objects equal?"
+    assert_msg = "Expected response dictoinary objects equal?"
+    assert result == expected_result, assert_msg
 
 
 def test_generate_json_error_meeting_title_name_false():
@@ -55,7 +57,7 @@ def test_generate_json_error_meeting_title_name_false():
     }
 
     response = generate_json(string_meeting_title, data)
-    assert_msj = "Expected response are json objects different in meeting name?"
+    assert_msj = "Expected response json objects in meeting name?"
     assert response != expected_response, assert_msj
 
 
@@ -74,7 +76,8 @@ def test_generate_json_error_data_different_data_false():
     }
 
     response = generate_json(string_meeting_title, data)
-    assert response != expected_response, "Expected response are json objects different in data?"
+    assert_msg = "Expected response are json objects different in data?"
+    assert response != expected_response, assert_msg
 
 
 def test_generate_dict_false():
@@ -87,5 +90,5 @@ def test_generate_dict_false():
     }
 
     result = generate_dict(string_date, key, key_variable)
-
-    assert result != not_expected_result, "Expected response dictoinary objects not equal?"
+    assert_msg = "Expected response dictoinary objects not equal?"
+    assert result != not_expected_result, assert_msg
