@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7", "3.8"]
+        python-version: ["3.7"]
     steps:
       - name: Cloning project
         uses: actions/checkout@v3
@@ -29,8 +29,10 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
-      - name: Building image
-        uses: docker/setup-buildx-action@v2
-      - name: Coverage report
-        run: /
-          coverage run --source=src/ .\src\main.py -o 1 -m general -sd 2022-09-10 -ed 2022-09-20 && coverage report
+      - name: Docker Compose Action
+        uses: isbang/compose-action@v1.3.2
+        with:
+          compose-file: docker-compose.yml
+      # - name: Coverage report
+      #   run: /
+      #     coverage run --source=src/ .\src\main.py -o 1 -m general -sd 2022-09-10 -ed 2022-09-20 && coverage report
