@@ -7,9 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7"]
+        python-version: ["3.7", "3.8"]
     steps:
-      - uses: actions/checkout@v3
+      - name: Cloning project
+        uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
@@ -28,3 +29,6 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+      - name: Coverage report
+        run: /
+          coverage run --source=src/ .\src\main.py -o 1 -m general -sd 2022-09-10 -ed 2022-09-20 && coverage report
