@@ -1,4 +1,6 @@
-from helpers.data_processor import is_valid_path, returns_json_attendance_reports
+from helpers.data_processor import (
+    is_valid_path,
+    returns_json_attendance_reports)
 
 
 def test_is_valid_path_att_rep_true():

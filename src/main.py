@@ -1,7 +1,10 @@
 # App entry point
 from helpers.args_processor import args_processor
 from helpers.data_processor import returns_json_attendance_reports
-from helpers.dates_helper import enter_new_dates, string_to_date, validation_date
+from helpers.dates_helper import (
+    enter_new_dates,
+    string_to_date,
+    validation_date)
 from helpers.json_processor import print_json, writes_json_file
 
 
@@ -23,8 +26,8 @@ def is_valid_option(selected_option):
 
 
 def process_questions():
-    ## display questions menu
-    ## drive "question" selection while not Quit
+    # display questions menu
+    # drive "question" selection while not Quit
     """
         returns number
     """
@@ -32,8 +35,11 @@ def process_questions():
     print('Please select an option')
     print('-----------------------')
     # TODO make markdown questions
-    template_question = "1. What is the number of Partipants attending 'meeting_name' Meeting per date, date filter between 'start_date' and 'end_date'\n"
-    template_question += "2. What is the duration of 'meeting_name' Meeting per date, date filter between 'start_date' and 'end_date'\n\n"
+    template_question = "1. What is the number of Partipants attending \
+        'meeting_name' Meeting per date, date filter between 'start_date' \
+        and 'end_date'\n"
+    template_question += "2. What is the duration of 'meeting_name' \
+        Meeting per date, date filter between 'start_date' and 'end_date'\n\n"
     template_question += "Q. Quit\n"
 
     print(template_question)
@@ -52,7 +58,6 @@ def process_questions():
 def process_question_options():
     # display input to request meeting name, end and start date
     # drive "input" aquisition while not Quit
-    
     meeting_name = input('Enter meeting name: ')
 
     start_date_input, end_date_input = enter_new_dates()
@@ -88,7 +93,7 @@ def main():
         arguments = args
     else:
         option = process_questions()
-        arguments =  process_question_options()
+        arguments = process_question_options()
     print('Option selected: ', option)
 
     if option == 'q':

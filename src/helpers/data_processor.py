@@ -1,5 +1,9 @@
 """
-    Filters in-memory meetings data and uses meeting_name, star_date, end_date, etc...
+    Filters in-memory meetings data and uses:
+    - meeting_name
+    - star_date
+    - end_date
+    - etc
 """
 import logging
 import os
@@ -23,14 +27,14 @@ def returns_json_attendance_reports(
     start_date: string,
     end_date: string,
     option: string
-    ):
+):
     """
         Option=1 => Number of participants
         Option=2 => Duration of meeting
     """
     # Validates 'attendance 'folder exists
     if not is_valid_path(ATTENDANCE_REPORT_FOLDER_NAME):
-        warning_message = " Error: 'attendace_reports' folder doesn't exists" 
+        warning_message = " Error: 'attendace_reports' folder doesn't exists"
         logging.warning(warning_message)
         return
 
@@ -54,18 +58,18 @@ def returns_json_attendance_reports(
                     with open(path_file, 'r', errors='replace') as csv_file:
                         file_lines = csv_file.readlines()
                         # Gets lines of interest
-                        number_participants = read_line(file_lines, 1)
-                        meeting_start_time = read_line(file_lines, 3)
+                        num_part = read_line(file_lines, 1)
+                        meeting_startt = read_line(file_lines, 3)
                         meeting_end_time = read_line(file_lines, 4)
                         if option == "1":  # Number participants
-                            ls_number_participants = replace_csv(number_participants)
+                            ls_num_part = replace_csv(num_part)
                             key = "participants"
-                            key_variable = int(ls_number_participants[1])
+                            key_variable = int(ls_num_part[1])
                         elif option == "2":  # Duration meeting
-                            list_meeting_start_time = replace_csv(meeting_start_time)
+                            ls_meeting_startt = replace_csv(meeting_startt)
                             ls_meeting_end_time = replace_csv(meeting_end_time)
                             start_time = dates_helper.string_to_date(
-                                list_meeting_start_time[1],
+                                ls_meeting_startt[1],
                                 format_date='%m/%d/%Y, %H:%M:%S %p'
                                 )
                             end_time = dates_helper.string_to_date(
@@ -88,7 +92,10 @@ def returns_json_attendance_reports(
                         key_variable = "0h 0m"
                     cont_files += 1
             if cont_files == len(os.listdir(path_sub_folder)):
-                dictionary_format = json_processor.generate_dict(string_date, key, key_variable)
+                dictionary_format = json_processor.generate_dict(
+                    string_date,
+                    key,
+                    key_variable)
                 data.append(dictionary_format)
         else:
             if option == "1":

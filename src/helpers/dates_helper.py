@@ -1,7 +1,11 @@
 from datetime import datetime, timedelta
 
 
-def list_date_range(start_date: datetime, end_date: datetime, format_date="%m%d%Y"):
+def list_date_range(
+    start_date: datetime,
+    end_date: datetime,
+    format_date="%m%d%Y"
+):
     """
         Devuelve una lista en el rango de fechas indicado
             Input start_date = type(datetime)
@@ -9,8 +13,8 @@ def list_date_range(start_date: datetime, end_date: datetime, format_date="%m%d%
         return Ex. ['09012020', '09022020', '09032020']
     """
     diff_days = end_date - start_date
-    
-    days = [(start_date+timedelta(days=i)).date().strftime(format_date) for i in range(diff_days.days + 1)]
+    days = [(start_date+timedelta(days=i)).date().strftime(format_date)
+            for i in range(diff_days.days + 1)]
     return days
 
 

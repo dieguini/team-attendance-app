@@ -18,7 +18,10 @@ def args_processor():
         Example:
 
         1) main.py -o 1 -m general -sd 2022-09-10 -ed 2022-09-20
-        2) main.py --option 1 --meeting general --startd 2022-09-10 --endd 2022-09-20
+        2) main.py  --option 1
+                    --meeting general
+                    --startd 2022-09-10
+                    --endd 2022-09-20
         '''
         )
     parser.add_argument('-o', '--option',
