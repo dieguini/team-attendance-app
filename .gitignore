@@ -1,0 +1,9 @@
+__pycache__
+.cache
+.pytest_cache
+*.pyc
+pytestdebug.log
+.coverage
+/output
+.vscode
+/htmlcov
