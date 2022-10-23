@@ -31,9 +31,9 @@ jobs:
           pytest
       - name: Docker Compose Building & Running
         run: |
-          docker-compose build .
+          docker-compose build
           docker-compose ps -a
-          docker compose run attendance-app-build -o 1 -m general -sd 2022-09-10 -ed 2022-09-20
+          docker compose run team-attendance-app -o 1 -m general -sd 2022-09-10 -ed 2022-09-20
       # - name: Coverage report
       #   run: /
       #     coverage run --source=src/ .\src\main.py -o 1 -m general -sd 2022-09-10 -ed 2022-09-20 && coverage report
