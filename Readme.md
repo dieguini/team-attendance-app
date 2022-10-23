@@ -125,7 +125,9 @@ When the user launches the app you need to present a menu of "template" question
 
 ## Docker usage
 
-### Building
+## With Docker
+
+#### Building
 
 Building process
 
@@ -133,7 +135,7 @@ Building process
 $ docker build <host>/attendance_app:<tag>
 ```
 
-### Interactive output
+#### Interactive output
 
 To interact with image just run the container without any _args_
 
@@ -141,7 +143,7 @@ To interact with image just run the container without any _args_
 $ docker run -v "host_folder:/attendance_app/output" -it --rm <host>/attendance_app:<tag>
 ```
 
-### Persiste output
+#### Persiste output
 
 To get the output of 
 
@@ -156,9 +158,53 @@ Args:
 - **-sd**: Start date of meeting (YYYY-MM-DD format)
 - **-ed**: End date of meeting (YYYY-MM-DD format)
 
-### Example
+<ins>Example</ins>
 
 ``` bash
 $ docker run -v "$(pwd)/output:/attendance_app/output" -it --rm <host>/attendance_app:<tag> -o 1 -m general -sd 2022-09-10 -ed 2022-09-20
 ```
 
+## Docker compose Usage
+
+### Building image
+
+``` bash
+$ docker compose build
+```
+
+### Running
+
+#### Interactive mode
+
+``` bash
+$ docker compose run team-attendance-app
+```
+
+#### Parameters pass
+
+``` bash
+$ docker compose run team-attendance-app [args]
+```
+
+Args:
+
+- **-o**: Option to process request { 1, 2 }
+- **-m**: Name of meeting to search for
+- **-sd**: Start date of meeting (YYYY-MM-DD format)
+- **-ed**: End date of meeting (YYYY-MM-DD format)
+
+<ins>Example</ins>
+
+``` bash
+$ docker compose run attendance-app-build -o 1 -m general -sd 2022-09-10 -ed 2022-09-20
+```
+
+## Python Usage
+
+### Flake8
+
+For testing porpuses
+
+```python
+python -m flake8
+```
