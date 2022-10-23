@@ -33,6 +33,8 @@ jobs:
         uses: isbang/compose-action@v1.3.2
         with:
           compose-file: docker-compose.yml
+      - name: Docker Image Verifictaion
+        run: docker-compose ps
       # - name: Coverage report
       #   run: /
       #     coverage run --source=src/ .\src\main.py -o 1 -m general -sd 2022-09-10 -ed 2022-09-20 && coverage report
