@@ -1,4 +1,4 @@
-name: Python attendance app ${{ github.actor }}
+name: Python attendance app
 
 on: [push]
 
