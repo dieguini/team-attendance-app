@@ -12,7 +12,6 @@ COPY ./requirements.txt ./requirements.txt
 RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 
 # Copying folders and application files
-# COPY ["./tests", "./src", "./attendance_reports", "./"]
 COPY ./tests /attendance_app/tests
 COPY ./src /attendance_app/src
 COPY ./attendance_reports/ /attendance_app/attendance_reports
