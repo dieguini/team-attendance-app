@@ -12,7 +12,7 @@ from helpers import dates_helper
 from helpers import json_processor
 from helpers.csv_processor import read_line, replace_csv
 
-ATTENDANCE_REPORT_FOLDER_NAME = 'attendace_reports'
+ATTENDANCE_REPORT_FOLDER_NAME = 'attendance_reports'
 
 
 def is_valid_path(path):

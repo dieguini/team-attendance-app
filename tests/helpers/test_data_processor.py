@@ -4,7 +4,7 @@ from helpers.data_processor import (
 
 
 def test_is_valid_path_att_rep_true():
-    att_rep_fold_name = 'attendace_reports'
+    att_rep_fold_name = 'attendance_reports'
     assert_msj = 'Exists path of folder exists'
     assert is_valid_path(att_rep_fold_name), assert_msj
 

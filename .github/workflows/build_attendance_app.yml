@@ -29,10 +29,12 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
-      - name: Docker Compose Building & Running
-        run: |
+      - name: Docker Compose Building
+        run: | 
           docker-compose build
           docker-compose ps -a
+      - name: Docker Compose Running
+        run: |
           docker compose run team-attendance-app -o 1 -m general -sd 2022-09-10 -ed 2022-09-20
       # - name: Coverage report
       #   run: /
