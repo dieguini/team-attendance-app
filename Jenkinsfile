@@ -19,9 +19,9 @@ pipeline {
         }
         stage('Install dependencies') {
             steps {
-                python -m pip install --upgrade pip
-                pip install flake8 pytest
-                if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+                sh 'python -m pip install --upgrade pip'
+                sh 'pip install flake8 pytest'
+                sh 'if [ -f requirements.txt ]; then pip install -r requirements.txt; fi'
             }
         }
     }
