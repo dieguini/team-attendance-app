@@ -2,27 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Install Python') {
             steps {
-                echo 'Building..'
+                sh """
+                    sudo apt update
+                    sudo apt install python3-pip -y
+                """
             }
         }
-        stage('Test') {
+        stage('Install dependencies') {
             steps {
-                echo 'Testing..'
+                sh 'python -m pip install --upgrade pip'
+                sh 'pip install flake8 pytest'
+                sh 'if [ -f requirements.txt ]; then pip install -r requirements.txt; fi'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-        //stage('Install dependencies') {
-        //    steps {
-        //        sh 'python -m pip install --upgrade pip'
-        //        sh 'pip install flake8 pytest'
-        //        sh 'if [ -f requirements.txt ]; then pip install -r requirements.txt; fi'
-        //    }
-        //}
     }
 }
