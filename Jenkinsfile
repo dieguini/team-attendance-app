@@ -12,9 +12,9 @@ pipeline {
         }
         stage('Install dependencies') {
             steps {
-                sh 'python3 -m pip3 install --upgrade pip3'
-                sh 'pip3 install flake8 pytest'
-                sh 'if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi'
+                sh 'python3 -m pip install --upgrade pip'
+                sh 'pip install flake8 pytest'
+                sh 'if [ -f requirements.txt ]; then pip install -r requirements.txt; fi'
             }
         }
     }
